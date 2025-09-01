@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      body { overflow-x: hidden; }
+    </style>
+  </head>
+  <body class="relative">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full z-50 bg-white backdrop-blur-sm shadow-lg">
+    <div class="container mx-auto flex justify-between items-center px-6 py-3">
+      <!-- Logo -->
+      <a href="homepage.php" class="flex items-center space-x-2">
+        <img src="image/image 2.png" alt="Logo" class="h-10">
+      </a>
+
+      <!-- Tombol Burger -->
+      <button id="menu-toggle" class="md:hidden text-green-800 focus:outline-none text-3xl">
+        ☰
+      </button>
+
+      <!-- MENU DESKTOP -->
+      <nav class="hidden md:flex space-x-8 text-green-800 font-medium">
+        <a href="beranda.html" class="hover:underline">Beranda</a>
+        <a href="produk.html" class="hover:underline">Produk</a>
+        <a href="kontak.html" class="hover:underline">Kontak Kami</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SIDEBAR MOBILE -->
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-green-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="flex justify-between items-center px-6 py-4 border-b border-green-700">
+      <img src="image/image 2.png" alt="Logo" class="h-10">
+      <button id="close-sidebar" class="text-3xl">&times;</button>
+    </div>
+    <ul class="flex flex-col space-y-4 px-6 py-6 text-lg font-medium">
+      <li><a href="beranda.html" class="hover:underline">Beranda</a></li>
+      <li><a href="produk.html" class="hover:underline">Produk</a></li>
+      <li><a href="kontak.html" class="hover:underline">Kontak Kami</a></li>
+    </ul>
+  </div>
+
+  <!-- OVERLAY -->
+  <div id="overlay" class="fixed inset-0 bg-black/50 hidden z-40"></div>
+
+  <!-- HERO -->
+  <section class="bg-cover bg-center pt-20" style="background-image: url('image/Untitled 2.png');">
+    <div class="container mx-auto text-center text-white h-screen flex items-center px-6">
+      <div class="mx-auto w-full md:w-2/4">
+        <h3 class="text-6xl md:text-7xl font-bold mb-6">Anoa <span class="text-yellow-500">Mas</span></h3>
+        <p class="text-lg md:text-xl mb-6">The Local Cashew Nut of Sulawesi Pride</p>
+        <a href="https://wa.me/6282227276447" target="_blank"
+           class="bg-transparent border border-yellow-500 hover:bg-yellow-600 text-white py-2 px-6 rounded-3xl transition">
+           Pesan Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const closeSidebar = document.getElementById("close-sidebar");
+
+    // buka sidebar
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+
+    // tutup sidebar
+    closeSidebar.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    // klik overlay juga nutup
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+
+    <div data-aos="fade-up">
+  <section class="container py-5">
+    <div class="row align-items-start" style="margin-top: 50px;">
+      <div class="col-md-4 mb-4 mb-md-0 text-center">
+        <img src="image/aboutus 1.png" alt="Tentang Kami" class="img-fluid rounded">
+      </div>
+
+      <div class="col-md-8 px-3 px-md-5">
+        <h1 class="font-bold text-3xl md:text-6xl mb-5 text-green-800" style="margin-top: 0;">
+          Tentang <span class="text-yellow-500">Kami</span>
+        </h1>
+        <p class="mb-4 text-xl">
+          Anoa Mas adalah perusahaan yang bergerak di bidang pengolahan dan distribusi kacang-kacangan berkualitas tinggi seperti kacang mede, kacang bawang, 
+          dan berbagai varian kacang lainnya yang telah menjadi favorit banyak kalangan. Didirikan dengan semangat kewirausahaan lokal dan dedikasi tinggi terhadap 
+          kualitas, Anoa Mas memulai perjalanannya dari skala rumahan dan terus berkembang hingga menjadi produsen camilan yang dikenal akan cita rasa khas serta proses 
+          produksinya yang higienis dan tanpa bahan pengawet. Kami percaya bahwa kualitas produk dimulai dari pemilihan bahan baku terbaik, sehingga kami bekerja sama langsung
+          dengan petani lokal untuk mendapatkan hasil panen yang segar dan bermutu tinggi.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+          <!-- Item 1 -->
+          <div class="flex items-center space-x-5">
+            <i class="bi bi-truck text-green-700 text-7xl"></i>
+            <div>
+              <h3 class="font-bold text-3xl">20+ Distributor</h3>
+              <p class="text-lg text-gray-600">diseluruh Indonesia</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex items-center space-x-5">
+            <i class="bi bi-people-fill text-green-700 text-7xl"></i>
+            <div>
+              <h3 class="font-bold text-3xl">250+ Mitra Agen</h3>
+              <p class="text-lg text-gray-600">diseluruh Indonesia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div data-aos="fade-up">
+<div class="container my-20 px-6">
+  <h1 class="font-bold text-3xl md:text-6xl mb-5 text-green-800 text-center">Visi dan Misi</h1>
+  <div class="flex flex-col md:flex-row gap-4">
+    <div class="w-full md:w-1/2">
+      <div class="text-center border rounded-lg p-6 shadow">
+        <h5 class="font-bold text-4xl text-green-800 mb-2">Visi</h5>
+        <p class="text-md">Menjadi Perusahaan yang unggul dalam produk olahan kacang dan juga penyedia camilan kacang sehat dengan cita rasa yang khas.</p>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2">
+      <div class="text-center border rounded-lg p-6 shadow">
+        <h5 class="font-bold text-4xl text-yellow-500 mb-2">Misi</h5>
+        <p class="text-md">Membangun hubungan baik yang saling menguntungkan dengan petani petani lokal untuk terus berkembang bersama.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div data-aos="fade-up">
+<div class="container px-6" style="margin-top: 100px;">
+  <h1 class="font-bold text-3xl md:text-6xl mb-5 text-green-800 text-center">Keuntungan Bergabung Dengan Anoa Mas</h1>
+ <div class="container mx-auto px-4 py-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <!-- Card 1 sampai 8 -->
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        1
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Founder-nya Praktisi Salman Al Farisi</h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        2
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Dibimbing sampai menghasilkan</h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        3
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Modal minim, margin lumayan</h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        4
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Repeat Order Tinggi</h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        5
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Produk Winning </h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        6
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Pembimbing asik dan ready 24 jam</h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        7
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2 text-center">Banyak program seru dan reward  shadiah </h3>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-md flex flex-col items-center">
+      <div class="w-14 h-14 flex items-center justify-center bg-green-800 text-white font-bold text-xl rounded-full shadow-lg mb-4">
+        8
+      </div>
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Sistem Keagenan</h3>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div data-aos="fade-up">
+<div class="container px-6" style="margin-top: 50px;">
+  <h1 class="font-bold text-3xl md:text-6xl mb-5 text-green-800 text-center">Temukan Kami</h1>
+  <div class="flex justify-center px-4">
+  <div class="w-full max-w-xl">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <!-- Header -->
+      <div class="bg-green-800 text-white px-6 py-4">
+        <h1 class="text-xl font-bold">📍 Akademi Juara Training Center - ANOA MAS</h1>
+        <p class="text-sm mt-1">
+          Gang atas, Jl. Kebon Bawang, RT.4/RW.7, Tj. Priok, Jakarta Utara
+        </p>
+      </div>
+
+      <!-- Gambar Peta -->
+      <img 
+        src="image/Ss_peta - Copy.png" 
+        alt="Peta Lokasi ANOA MAS" 
+        class="w-full h-64 object-cover"
+      >
+
+      <!-- Tombol ke Google Maps -->
+      <div class="p-6">
+        <a 
+          href="https://maps.app.goo.gl/bZCkEkTWr2TgK46U6"
+          target="_blank"
+          class="block w-full text-center bg-green-800 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition"
+        >
+          ➤ Lihat Lokasi di Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div data-aos="fade-up">
+<div class="footer" style="margin-top: 50px;">
+  <footer class="bg-green-800 text-white py-10 mt-16">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+
+    <!-- Logo dan Deskripsi -->
+    <div>
+      <img src="image/image 2.png" alt="Logo" class="w-28 md:w-36 mb-4">
+      <p class="text-sm md:text-base font-medium">Akademi Juara Training Center - ANOA MAS<br>Tempat pelatihan terbaik di Kebon Bawang, Jakarta Utara.</p>
+    </div>
+
+    <!-- Menu Navigasi -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Menu</h3>
+      <ul class="space-y-2 text-sm md:text-base font-medium">
+        <li><a href="beranda.html" class="hover:underline">Beranda</a></li>
+        <li><a href="#tentang" class="hover:underline">Produk</a></li>
+        <li><a href="#layanan" class="hover:underline">Kontak Kami</a></li>
+      </ul>
+    </div>
+
+    <!-- Media Sosial -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Ikuti Kami</h3>
+      <ul class="space-y-3 text-sm md:text-base">
+        <li class="flex items-center gap-3">
+          <img src="image/WA.png" alt="WhatsApp" class="w-6 h-6">
+          <a href="https://wa.me/6282227276447" target="_blank" class="hover:underline font-medium text-white text-base">
+            WhatsApp Kami
+          </a>
+        </li>
+        <li class="flex items-center gap-3">
+          <img src="image/ig_real.png" alt="Instagram" class="w-6 h-6">
+          <a href="https://instagram.com/anoamasofficial" target="_blank" class="font-medium text-white text-base hover:underline">
+            @anoamasofficial
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-center text-xs mt-10 text-gray-300 px-4">
+    © 2025 Akademi Juara Training Center - ANOA MAS. All rights reserved.
+  </div>
+</footer>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
+  </body>
+</html>

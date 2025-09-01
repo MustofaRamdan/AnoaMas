@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+      body { overflow-x: hidden; }
+    </style>
+  </head>
+  <body class="relative">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full z-50 bg-white backdrop-blur-sm shadow-lg">
+    <div class="container mx-auto flex justify-between items-center px-6 py-3">
+      <!-- Logo -->
+      <a href="homepage.php" class="flex items-center space-x-2">
+        <img src="image/image 2.png" alt="Logo" class="h-10">
+      </a>
+
+      <!-- Tombol Burger -->
+      <button id="menu-toggle" class="md:hidden text-green-800 focus:outline-none text-3xl">
+        ☰
+      </button>
+
+      <!-- MENU DESKTOP -->
+      <nav class="hidden md:flex space-x-8 text-green-800 font-medium">
+        <a href="beranda.html" class="hover:underline">Beranda</a>
+        <a href="produk.html" class="hover:underline">Produk</a>
+        <a href="kontak.html" class="hover:underline">Kontak Kami</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SIDEBAR MOBILE -->
+  <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-green-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="flex justify-between items-center px-6 py-4 border-b border-green-700">
+      <img src="image/image 2.png" alt="Logo" class="h-10">
+      <button id="close-sidebar" class="text-3xl">&times;</button>
+    </div>
+    <ul class="flex flex-col space-y-4 px-6 py-6 text-lg font-medium">
+      <li><a href="beranda.html" class="hover:underline">Beranda</a></li>
+      <li><a href="produk.html" class="hover:underline">Produk</a></li>
+      <li><a href="kontak.html" class="hover:underline">Kontak Kami</a></li>
+    </ul>
+  </div>
+
+  <!-- OVERLAY -->
+  <div id="overlay" class="fixed inset-0 bg-black/50 hidden z-40"></div>
+
+  <!-- HERO -->
+  <section class="bg-cover bg-center pt-20" style="background-image: url('image/Group15.png');">
+  <div class="container mx-auto text-white h-screen flex items-center px-6">
+    <div class="w-full md:w-2/4 text-left">
+      <h3 class="text-6xl md:text-7xl font-bold mb-6">
+        Produk pilihan <span class="text-yellow-500">Anoa Mas</span>
+      </h3>
+      <p class="text-lg md:text-xl mb-6">
+        Kami siap memberikan produk pilihan untuk anda</p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- SCRIPT -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+    const closeSidebar = document.getElementById("close-sidebar");
+
+    // buka sidebar
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("hidden");
+    });
+
+    // tutup sidebar
+    closeSidebar.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+
+    // klik overlay juga nutup
+    overlay.addEventListener("click", () => {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.add("hidden");
+    });
+  </script>
+
+<div data-aos="fade-up">
+  <div class="container mx-auto mt-20 mb-5 px-6">
+    <h1 class="font-bold text-3xl md:text-6xl mb-10 text-green-800 text-center">Produk Kami</h1>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <img src="image/poto.png" alt="Produk" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h5 class="text-2xl font-bold text-gray-800 mb-2">Anoamas Premium Small Package 450gr </h5>
+          <p class="text-gray-600 mb-4">
+            4 toples/paket
+rasa : original, thailand, tomyam, pedas, crispy, madu
+          </p>
+        </div>
+      </div>
+
+      <!-- Duplikat card kalau mau lebih banyak -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <img src="image/poto.png" alt="Produk" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h5 class="text-2xl font-bold text-gray-800 mb-2">Anoamas Premium Medium Package 730g</h5>
+          <p class="text-gray-600 mb-4">
+            4 toples/paket
+rasa : original, thailand, tomyam, pedas, crispy, madu
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 hover:shadow-2xl transition-all duration-300">
+        <img src="image/poto.png" alt="Produk" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h5 class="text-2xl font-bold text-gray-800 mb-2">Anoamas Premium Big Package 900gr
+</h5>
+          <p class="text-gray-600 mb-4">
+            4 toples/paket
+rasa : original, thailand, tomyam, pedas, crispy, madu
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-aos="fade-up">
+<div class="mt-1 mb-1">
+    <img src="image/fotoin.png" alt="Desain Full" class="w-full h-auto object-cover">
+</div>
+</div>
+
+
+<div data-aos="fade-up">
+  <div class="container mx-auto px-6 py-10">
+    <h1 class="font-bold text-3xl md:text-6xl mb-10 text-green-800 text-center">
+      Galeri Produk
+    </h1>
+
+    <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+      <img src="image/DSC09162.jpg" alt="Produk 1" class="w-full h-auto object-cover rounded-lg shadow">
+      <img src="image/galeri1.png" alt="Produk 2" class="w-full h-auto object-cover rounded-lg shadow">
+      <img src="image/DSC09237.jpg" alt="Produk 3" class="w-full h-auto object-cover rounded-lg shadow">
+      <img src="image/galeri2.png" alt="Produk 4" class="w-full h-auto object-cover rounded-lg shadow">
+      <img src="image/DSC09278.jpg" alt="Produk 5" class="w-full h-auto object-cover rounded-lg shadow">
+      <img src="image/galeri4 - Copy.png" alt="Produk 6" class="w-full h-auto object-cover rounded-lg shadow">
+    </div>
+  </div>
+</div>
+
+
+<div data-aos="fade-up">
+  <div class="container mx-auto px-6 py-10">
+    <h1 class="font-bold text-3xl md:text-6xl mb-10 text-green-800 text-center">Testimoni Pelanggan</h1>  
+
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300 text-center">
+        <p class="text-gray-600 italic mb-4">"Adminnya fast respon on 24 jam, komplain cepat tanggap"</p>
+        <h5 class="text-green-800 font-bold text-lg">Rizal <span class="text-gray-500 text-sm">(Agen)</span></h5>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300 text-center">
+        <p class="text-gray-600 italic mb-4">"Kacang mede premiumnya bagus. Hampers Anoa Mas ini sudah ada pasarnya jadi cepat kejualnya."</p>
+        <h5 class="text-green-800 font-bold text-lg">Hermaji <span class="text-gray-500 text-sm">(Agen)</span></h5>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden p-6 hover:scale-105 hover:shadow-2xl transition-all duration-300 text-center">
+        <p class="text-gray-600 italic mb-4">"Kacangnya enak, cocok buat cemilan waktu belajar atau nonton"</p>
+        <h5 class="text-green-800 font-bold text-lg">Husein <span class="text-gray-500 text-sm">(Pelajar)</span></h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div data-aos="fade-up">
+<div class="footer" style="margin-top: 50px;">
+  <footer class="bg-green-800 text-white py-10 mt-16">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+
+    <!-- Logo dan Deskripsi -->
+    <div>
+      <img src="image/image 2.png" alt="Logo" class="w-28 md:w-36 mb-4">
+      <p class="text-sm md:text-base font-medium">Akademi Juara Training Center - ANOA MAS<br>Tempat pelatihan terbaik di Kebon Bawang, Jakarta Utara.</p>
+    </div>
+
+    <!-- Menu Navigasi -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Menu</h3>
+      <ul class="space-y-2 text-sm md:text-base font-medium">
+        <li><a href="beranda.html" class="hover:underline">Beranda</a></li>
+        <li><a href="#tentang" class="hover:underline">Produk</a></li>
+        <li><a href="#layanan" class="hover:underline">Kontak Kami</a></li>
+      </ul>
+    </div>
+
+    <!-- Media Sosial -->
+    <div>
+      <h3 class="text-lg font-semibold mb-4">Ikuti Kami</h3>
+      <ul class="space-y-3 text-sm md:text-base">
+        <li class="flex items-center gap-3">
+          <img src="image/WA.png" alt="WhatsApp" class="w-6 h-6">
+          <a href="https://wa.me/6282227276447" target="_blank" class="hover:underline font-medium text-white text-base">
+            WhatsApp Kami
+          </a>
+        </li>
+        <li class="flex items-center gap-3">
+          <img src="image/ig_real.png" alt="Instagram" class="w-6 h-6">
+          <a href="https://instagram.com/anoamasofficial" target="_blank" class="font-medium text-white text-base hover:underline">
+            @anoamasofficial
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-center text-xs mt-10 text-gray-300 px-4">
+    © 2025 Akademi Juara Training Center - ANOA MAS. All rights reserved.
+  </div>
+</footer>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+  AOS.init();
+</script>
+  </body>
+</html>
