@@ -64,69 +64,64 @@
       </div>
     </form>
 
-    <!-- Pesan sukses -->
-    <div id="successMsg" class="hidden text-center mt-6">
-      <p class="text-green-700 mb-3 text-lg">✅ Data berhasil terkirim!</p>
-      <a id="waLink"
-         class="inline-block bg-green-800 text-white px-4 py-2 rounded-lg hover:bg-green-900 transition">
-         Kembali
-      </a>
-    </div>
+    <!-- Pesan sukses tidak lagi diperlukan karena akan redirect otomatis -->
   </div>
 
   <script>
     const form = document.getElementById("myForm");
     const loadingMsg = document.getElementById("loadingMsg");
-    const successMsg = document.getElementById("successMsg");
     const submitBtn = document.getElementById("submitBtn");
-    const waLink = document.getElementById("waLink");
 
     form.addEventListener("submit", function(e) {
       e.preventDefault();
 
-      // Ambil data form
-      let nama = e.target.nama.value;
-      let kota = e.target.kota.value;
-      let hp = e.target.hp.value;
-      let email = e.target.email.value;
-      let alamat = e.target.alamat.value;
-      let agen = e.target.agen.value;
+      // Ambil data dari form
+      const nama = e.target.nama.value;
+      const kota = e.target.kota.value;
+      const hp = e.target.hp.value;
+      const email = e.target.email.value;
+      const alamat = e.target.alamat.value;
+      const agen = e.target.agen.value;
 
-      // Tampilkan loading
+      // Prioritaskan redirect ke WhatsApp
+      // 1. Siapkan pesan WhatsApp
+      const pesan = `Halo, saya ingin mendaftar kemitraan Anoa Mas dengan data berikut:
+
+Nama: ${nama}
+Asal Kota: ${kota}
+Nomor HP: ${hp}
+Email: ${email}
+Alamat Lengkap: ${alamat}
+Ingin mendaftar sebagai: ${agen}
+
+Terima kasih.`;
+      
+      const nomorWA = "6289502274325"; // Nomor WA tujuan
+      const waUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+      
+
+      // Tampilkan status loading sebelum redirect
       loadingMsg.classList.remove("hidden");
       submitBtn.disabled = true;
-      submitBtn.innerText = "Mengirim...";
+      submitBtn.innerText = "Mengalihkan ke WhatsApp...";
 
-      // Kirim ke Google Sheets
-      fetch("https://script.google.com/macros/s/AKfycbyqNkOaeGfs2Wd9LT8N9LHUmsky7frrFn3u0YGOqQs7mTc9dlCmWdMgfzu05wL_9V8MnQ/exec", {
-        method: "POST",
-        body: JSON.stringify({ nama, kota, hp, email, alamat, agen })
-      }).then(res => {
-        // Hilangkan form + loading, munculin pesan sukses
-        loadingMsg.classList.add("hidden");
-        form.classList.add("hidden");
-        successMsg.classList.remove("hidden");
+      // 2. Kirim data ke Google Sheets di latar belakang (tanpa menunggu response)
+      try {
+        fetch("https://script.google.com/macros/s/AKfycbyqNkOaeGfs2Wd9LT8N9LHUmsky7frrFn3u0YGOqQs7mTc9dlCmWdMgfzu05wL_9V8MnQ/exec", {
+          method: "POST",
+          body: JSON.stringify({ nama, kota, hp, email, alamat, agen }),
+          mode: 'no-cors' // Mode 'no-cors' cocok untuk pengiriman latar belakang
+        });
+      } catch (error) {
+        console.error("Gagal mengirim data ke Google Sheets:", error);
+        // Proses redirect tetap berjalan meskipun pengiriman ke sheets gagal
+      }
 
-        // 🔗 Buat link WhatsApp otomatis
-        let nomorWA = "6285817809103"; // ganti nomor WA tujuan
-        let pesan = `Halo, saya ingin daftar kemitraan:%0A
-Nama: ${nama}%0A
-Kota: ${kota}%0A
-HP: ${hp}%0A
-Email: ${email}%0A
-Alamat: ${alamat}%0A
-Join sebagai: ${agen}`;
-
-        let waUrl = `https://wa.me/${nomorWA}?text=${pesan}`;
-        waLink.setAttribute("href", waUrl);
-        waLink.setAttribute("target", "_blank");
-
-      }).catch(err => {
-        loadingMsg.classList.add("hidden");
-        alert("❌ Gagal mengirim data!");
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Kirim";
-      });
+      // 3. Alihkan pengguna ke WhatsApp setelah jeda singkat
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 300); // Jeda 300ms untuk memberi waktu fetch dimulai
     });
   </script>
 
